@@ -21,6 +21,7 @@ func main() {
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/ws", HandleWebSocket)
+	mux.HandleFunc("/session", HandleSession)
 	
 	go HandleMessages()
 	

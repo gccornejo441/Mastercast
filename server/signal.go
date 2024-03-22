@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/google/uuid"
 	"log"
 	"net/http"
 
@@ -51,4 +52,11 @@ func HandleMessages() {
 		}
 	}
 }
+}
+
+func HandleSession(w http.ResponseWriter, r *http.Request) {
+	uuid := uuid.New()
+	w.Header().Set("Content-Type", "text/plain")
+	w.Write([]byte(uuid.String()))
+	log.Printf("Session ID: %s", uuid.String())
 }
